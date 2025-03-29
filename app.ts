@@ -1,9 +1,24 @@
-import { CompanyAccount } from './class/CompanyAccount'
-import { PeopleAccount } from './class/PeopleAccount'
+import { CompanyAccount } from './class/CompanyAccount';
+import { PeopleAccount } from './class/PeopleAccount';
 
-const peopleAccount: PeopleAccount = new PeopleAccount(1, 'Nath', 10)
-console.log(peopleAccount)
-peopleAccount.deposit()
-const companyAccount: CompanyAccount = new CompanyAccount('DIO', 20)
-companyAccount.deposit()
-console.log(companyAccount)
+const peopleAccount: PeopleAccount = new PeopleAccount(1, 'Nath', 10);
+console.log(`Conta criada
+  --------------------------------------
+  Nome: ${peopleAccount.getName()}
+  Saldo: ${peopleAccount.balance}
+  --------------------------------------
+  `);
+peopleAccount.deposit(100);
+peopleAccount.withdraw(50);
+peopleAccount.getBalance();
+
+const companyAccount: CompanyAccount = new CompanyAccount('DIO', 11);
+console.log(`Conta criada
+  --------------------------------------
+  Nome: ${companyAccount.getName()}
+  Saldo: ${companyAccount.balance}
+  --------------------------------------
+  `);
+companyAccount.deposit(100);
+companyAccount.withdraw(150);
+companyAccount.getBalance();
