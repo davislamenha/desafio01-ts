@@ -19,7 +19,7 @@ export abstract class DioAccount {
     return this.name;
   };
 
-  deposit = (amount: number): void => {
+  deposit(amount: number): void {
     if (this.validateStatus()) {
       this.balance += amount;
       console.log(
@@ -28,7 +28,7 @@ export abstract class DioAccount {
         )} reais. Saldo: ${fomartCurrencyToBRL(this.balance)}`,
       );
     }
-  };
+  }
 
   withdraw = (amount: number): void => {
     if (amount > this.balance)
