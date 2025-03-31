@@ -1,3 +1,4 @@
+import { fomartCurrencyToBRL } from '../utils/FormatUtils';
 export abstract class DioAccount {
   private name: string;
   private readonly accountNumber: number;
@@ -21,26 +22,42 @@ export abstract class DioAccount {
   deposit = (amount: number): void => {
     if (this.validateStatus()) {
       this.balance += amount;
-      console.log(`Voce depositou ${amount} reais. Saldo: ${this.balance}`);
+      console.log(
+        `Voce depositou ${fomartCurrencyToBRL(
+          amount,
+        )} reais. Saldo: ${fomartCurrencyToBRL(this.balance)}`,
+      );
     }
   };
 
   withdraw = (amount: number): void => {
     if (amount > this.balance)
       throw new Error(
-        `Saldo insuficiente! Ola ${this.name}, voce nao pode sacar ${amount}, pois possui ${this.balance} de saldo disponivel.`,
+        `Saldo insuficiente! Ola ${
+          this.name
+        }, voce nao pode sacar ${fomartCurrencyToBRL(
+          amount,
+        )}, pois possui ${fomartCurrencyToBRL(
+          this.balance,
+        )} de saldo disponivel.`,
       );
     if (this.validateStatus()) {
       this.balance -= amount;
-      console.log(`Voce sacou ${amount}. Saldo: ${this.balance}`);
+      console.log(
+        `Voce sacou ${fomartCurrencyToBRL(
+          amount,
+        )}. Saldo: ${fomartCurrencyToBRL(this.balance)}`,
+      );
     }
   };
 
   getBalance = (): void => {
-    console.log(`Ola ${this.name}, voce possui ${this.balance} reais.`);
+    console.log(
+      `Ola ${this.name}, voce possui ${fomartCurrencyToBRL(this.balance)}`,
+    );
   };
 
-  private validateStatus = (): boolean => {
+  protected validateStatus = (): boolean => {
     if (this.status) {
       return this.status;
     }

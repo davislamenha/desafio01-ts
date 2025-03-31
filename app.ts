@@ -20,5 +20,6 @@ console.log(`Conta criada
   --------------------------------------
   `);
 companyAccount.deposit(100);
-companyAccount.withdraw(150);
+companyAccount.getLoan(5000);
 companyAccount.getBalance();
+companyAccount.withdraw(6000);
