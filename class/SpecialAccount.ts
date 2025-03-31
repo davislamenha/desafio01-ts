@@ -9,13 +9,13 @@ export class SpecialAccount extends DioAccount {
   deposit(amount: number): void {
     if (this.validateStatus()) {
       const amountWithBonus = amount + 10;
-      this.balance += amountWithBonus;
+      this.setBalance(this.getBalance() + amountWithBonus);
 
       console.log(
         `Você depositou ${fomartCurrencyToBRL(
           amountWithBonus,
         )} (com bônus de 10 reais). Saldo: ${fomartCurrencyToBRL(
-          this.balance,
+          this.getBalance(),
         )}`,
       );
     }
