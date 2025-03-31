@@ -8,11 +8,11 @@ export class CompanyAccount extends DioAccount {
 
   getLoan = (amount: number): void => {
     if (this.validateStatus()) {
-      this.balance += amount;
+      this.setBalance(this.getBalance() + amount);
       console.log(
         `Voce pegou um empréstimo de ${fomartCurrencyToBRL(
           amount,
-        )}. Saldo: ${fomartCurrencyToBRL(this.balance)}`,
+        )}. Saldo: ${fomartCurrencyToBRL(this.getBalance())}`,
       );
     }
   };

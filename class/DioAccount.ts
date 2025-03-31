@@ -1,8 +1,8 @@
 import { fomartCurrencyToBRL } from '../utils/FormatUtils';
 export abstract class DioAccount {
-  private name: string;
+  private readonly name: string;
   private readonly accountNumber: number;
-  balance: number = 0;
+  private balance: number = 0;
   private status: boolean = true;
 
   constructor(name: string, accountNumber: number) {
@@ -10,13 +10,20 @@ export abstract class DioAccount {
     this.accountNumber = accountNumber;
   }
 
-  setName = (name: string): void => {
-    this.name = name;
-    console.log('Nome alterado com sucesso!');
+  getAccountNumber = (): number => {
+    return this.accountNumber;
   };
 
   getName = (): string => {
     return this.name;
+  };
+
+  setBalance = (amount: number): void => {
+    this.balance = amount;
+  };
+
+  getBalance = (): number => {
+    return this.balance;
   };
 
   deposit(amount: number): void {
@@ -49,12 +56,6 @@ export abstract class DioAccount {
         )}. Saldo: ${fomartCurrencyToBRL(this.balance)}`,
       );
     }
-  };
-
-  getBalance = (): void => {
-    console.log(
-      `Ola ${this.name}, voce possui ${fomartCurrencyToBRL(this.balance)}`,
-    );
   };
 
   protected validateStatus = (): boolean => {
